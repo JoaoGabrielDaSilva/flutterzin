@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutterzin/screens/chat_screen.dart';
@@ -8,7 +10,20 @@ main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeData theme = ThemeData.dark();
+
+  void changeTheme() {
+    setState(() {
+      theme = theme == ThemeData.dark() ? ThemeData.light() : ThemeData.dark();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -21,12 +36,12 @@ class MyApp extends StatelessWidget {
           }
           return MaterialApp(
             title: 'MyApp',
-            theme: ThemeData.light(),
+            theme: theme,
             home: StreamBuilder(
                 stream: FirebaseAuth.instance.authStateChanges(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData)
-                    return ChatScreen();
+                    return ChatScreen(changeTheme);
                   else
                     return LoginScreen();
                 }),

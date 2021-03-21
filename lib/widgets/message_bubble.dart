@@ -26,13 +26,27 @@ class MessageBubble extends StatelessWidget {
             left: isMine ? 0 : 20,
             bottom: 20,
           ),
-          constraints: BoxConstraints(minWidth: 100),
+          constraints: BoxConstraints(
+            minWidth: 100,
+            maxWidth: MediaQuery.of(context).size.width * 0.6,
+          ),
           decoration: BoxDecoration(
-            color: isMine ? Colors.green : null,
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              color: Constants.BORDER_COLOR,
+            color: isMine ? Colors.green : null, //Colors.white,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+              topLeft: Radius.circular(isMine ? 10 : 0),
+              topRight: Radius.circular(isMine ? 0 : 10),
             ),
+            border: isMine
+                ? null
+                : Border.all(
+                    color: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .color
+                        .withOpacity(0.2),
+                  ),
           ),
           child: Column(
             crossAxisAlignment:
@@ -45,7 +59,9 @@ class MessageBubble extends StatelessWidget {
               Text(
                 message,
                 style: TextStyle(
-                  color: isMine ? Colors.white : Colors.black,
+                  color: isMine
+                      ? Colors.white
+                      : Theme.of(context).textTheme.bodyText1.color,
                 ),
               ),
             ],

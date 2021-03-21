@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutterzin/utils/constants.dart';
 
 class ChatAppBar extends StatefulWidget implements PreferredSizeWidget {
-  ChatAppBar({Key key})
+  final void Function() changeTheme;
+
+  ChatAppBar(this.changeTheme, {Key key})
       : preferredSize = Size.fromHeight(75),
         super(key: key);
 
@@ -25,7 +27,11 @@ class _ChatAppBar extends State<ChatAppBar> {
         preferredSize: Size.fromHeight(75),
         child: Container(
           height: 1,
-          color: Constants.BORDER_COLOR,
+          color: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .color
+                        .withOpacity(0.2),
         ),
       ),
       actions: [
@@ -50,9 +56,27 @@ class _ChatAppBar extends State<ChatAppBar> {
                   ),
                 ),
               ),
+              DropdownMenuItem(
+                value: 'change_theme',
+                child: Container(
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.brightness_3_rounded,
+                        color: Colors.black,
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text('Mudar Tema'),
+                    ],
+                  ),
+                ),
+              ),
             ],
             onChanged: (value) {
               if (value == 'logout') FirebaseAuth.instance.signOut();
+              if (value == 'change_theme') widget.changeTheme();
             },
           ),
         )
@@ -68,7 +92,7 @@ class _ChatAppBar extends State<ChatAppBar> {
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text(
-              'Nome',
+              'Grupo',
               style: Theme.of(context).textTheme.headline6,
             ),
           ),

@@ -13,7 +13,11 @@ class MessageBar extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(
-            color: Constants.BORDER_COLOR,
+            color: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .color
+                        .withOpacity(0.2),
           ),
         ),
       ),
