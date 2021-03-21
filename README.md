@@ -1,4 +1,4 @@
-# expenses
+# flutterzin
 
 A new Flutter project.
 

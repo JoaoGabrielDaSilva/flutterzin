@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "137622378370",
+    "project_id": "flutterzin-40b16",
+    "storage_bucket": "flutterzin-40b16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137622378370:android:3cbe1de870734d98a1e19b",
+        "android_client_info": {
+          "package_name": "br.com.flutterzin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137622378370-h9o5pqmt565rlptb268qvjumep6o8prb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-Sbtvu4F2L2pGrCDca6G1PDl5ECRaJ2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137622378370-h9o5pqmt565rlptb268qvjumep6o8prb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
